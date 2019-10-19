@@ -1,0 +1,23 @@
+url:
+  author:
+    show: "http://localhost:8020/{id}"
+    save: "http://localhost:8020/"
+    all: "http://localhost:8020/"
+  book: "http://localhost:8010/{id}"
+
+topics:
+  author: authors
+  book: books
+
+spring:
+  kafka:
+    bootstrap-servers: fwfurtado-host.local:9092
+    consumer:
+      group-id: graphql
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"

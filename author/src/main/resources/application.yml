@@ -1,0 +1,12 @@
+server:
+  port: 8020
+
+spring:
+  kafka:
+    bootstrap-servers: fwfurtado-host.local:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+topic:
+  name: authors
