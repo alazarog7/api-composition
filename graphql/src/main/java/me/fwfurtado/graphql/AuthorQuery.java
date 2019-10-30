@@ -1,6 +1,7 @@
 package me.fwfurtado.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.relay.Relay;
 import java.util.List;
 import me.fwfurtado.domain.Author;
 import me.fwfurtado.repositories.AuthorRepository;

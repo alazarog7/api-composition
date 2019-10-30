@@ -33,7 +33,7 @@ public class BookRepository {
     }
 
     public Book save(String title, Long authorId) {
-        Book book = database.computeIfAbsent(identity.incrementAndGet(), id -> new Book(id, "Spring", authorId));
+        Book book = database.computeIfAbsent(identity.incrementAndGet(), id -> new Book(id, title, authorId));
 
         kafka.send(bookTopic, book.getId(), book);
 

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import me.fwfurtado.domain.Author;
 import org.springframework.stereotype.Repository;
 
@@ -23,5 +24,9 @@ public class AuthorRepository {
 
     public List<Author> findAll() {
         return new ArrayList<>(database.values());
+    }
+
+    public List<Author> findAllByIds(List<Long> authorsId) {
+        return authorsId.stream().map(database::get).collect(Collectors.toList());
     }
 }

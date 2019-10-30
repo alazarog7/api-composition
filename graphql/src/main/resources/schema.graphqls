@@ -10,12 +10,26 @@ type Author {
     name: String!
 }
 
+type BookConnection {
+    edges: [BookEdge]
+    pageInfo: PageInfo
+}
+
+type PageInfo {
+    hasPreviousPage: Boolean!
+    hasNextPage: Boolean!
+}
+
+type BookEdge {
+    cursor: String
+    node: Book
+}
+
 type Query {
     searchBookBy(id: ID!): Book
     authors: [Author!]
-    books: [Book!]
+    books(first: Int, after: String): BookConnection
 }
-
 
 input AuthorInput {
     name: String!

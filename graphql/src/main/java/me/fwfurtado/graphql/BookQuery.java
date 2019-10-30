@@ -1,7 +1,9 @@
 package me.fwfurtado.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import java.util.List;
+import graphql.relay.Connection;
+import graphql.relay.SimpleListConnection;
+import graphql.schema.DataFetchingEnvironment;
 import java.util.Optional;
 import me.fwfurtado.domain.Book;
 import me.fwfurtado.repositories.BookRepository;
@@ -17,8 +19,8 @@ public class BookQuery implements GraphQLQueryResolver {
         this.repository = repository;
     }
 
-    public List<Book> books() {
-        return repository.findAll();
+    public Connection<Book> books(int first, String after, DataFetchingEnvironment environment) {
+        return new SimpleListConnection<>(repository.findAll()).get(environment);
     }
 
     public Optional<Book> searchBookBy(Long id) {
